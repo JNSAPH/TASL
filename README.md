@@ -1,5 +1,5 @@
 # ThatsAShort.link
-The magic running ThatsAShort.link | Very much inspired by WebDevSimplified
+The magic thats running ThatsAShort.link | Very much inspired by WebDevSimplified
 
 ## Installation
 ```
@@ -9,7 +9,7 @@ npm install
 npm start
 ```
 ```
-http://YOUR-IP-ADRESS:5000/
+http://YOUR-IP-ADRESS:3010/
 ```
 
 ## Usage 

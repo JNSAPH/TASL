@@ -32,4 +32,6 @@ app.get('/:shortUrl', async (req, res) => {
   res.redirect(shortUrl.full)
 })
 
+console.log(`Server started on port ${config.port}`)
+
 app.listen(process.env.PORT || config.port);
