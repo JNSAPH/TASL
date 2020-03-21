@@ -11,16 +11,18 @@ npm start
 ```
 http://localhost:3010/
 ```
+CHANGE THE DEFAULT LOGIN DETAILS IN CONFIG.JSON
 
 ## Usage 
 Download the Repo and follow the Steps under **Installation**.
 By Default this App will use the Port 5000. You can change it in the config.json file. Setup can differ from your Webserver Configuartion.
+
 Make sure you have MongoDB installed on your System! This is currently crucial for making it work.
 
 ## Comming soon
 - [x] Custom short URLs
 - [x] Easy way to Delete short URLs
-- [ ] Login (Probably Login with Google)
+- [x] Login | Currently a Basic Login is Available
 
 ## FAQ
 

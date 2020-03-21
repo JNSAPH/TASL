@@ -1,6 +1,5 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const basicAuth = require('express-basic-auth')
 
 const ShortUrl = require('./models/shortUrl')
 const config = require('./config.json')
