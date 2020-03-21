@@ -9,7 +9,7 @@ npm install
 npm start
 ```
 ```
-http://YOUR-IP-ADRESS:3010/ | http://localhost:3010
+http://localhost:3010/
 ```
 
 ## Usage 
