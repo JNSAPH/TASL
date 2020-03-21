@@ -16,27 +16,34 @@
   <body style="text-align: center;">
     <div style="margin-top: 1in">
       <h1>ThatsAShort.link</h1>
-      <p style="font-size:medium">a Project by <a href="https://jnsaph.website/">APH</a></p>
     </div>
 
     <div class= "container card text-center" style="margin-top: 5%">
         <div class="card-header">
-            Type in your URL
+            Add / Remove a URL
           </div>
         <div class="card-body">
             <form class="form-inline" action="/shorten" method="Post" style="display: inline-block;">
                 <div class="form-group mx-sm-3 mb-2">
                   <label for="fullUrl" class="sr-only">URL</label>
                   <input type="url" class="form-control" id="fullUrl" name="fullUrl" placeholder="Type in your URL">
+                  <input type="string" class="form-control" id="customShort" name="customShort" placeholder="Custom URL Code">
                 </div>
                 <button type="submit" class="btn btn-primary mb-2">Shrink URL</button>
+              </form>
+              <hr>
+              <form class="form-inline" action="/delete" method="Post" style="display: inline-block;">
+                <div class="form-group mx-sm-3 mb-2">
+                  <input type="text" class="form-control" id="delete" name="delete" placeholder="Type in your URL Code">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Delete URL Code</button>
               </form>
         </div>
       </div>
 
       <div class="container card text-center" style="margin-top: 50px">
         <div class="card-header">
-            List of shrunked URLs
+            List of shrunken URLs
           </div>
         <div class="card-body">
             <table class="table">
@@ -45,6 +52,7 @@
                         <th>Full URL</th>
                         <th>URL Code</th>
                         <th>Clicks</th>
+                        <th></th>
                     </tr>
                 </thread>
                 <tbody>
@@ -59,6 +67,10 @@
             </table>
         </div>
       </div>
+
+      <footer style="margin: 30px">
+        Copyright <a href="https://jnsaph.website/">JNSAPH</a> | Version <%= package.version %>
+      </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
