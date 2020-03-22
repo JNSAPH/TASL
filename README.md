@@ -19,6 +19,9 @@ By Default this App will use the Port 5000. You can change it in the config.json
 
 Make sure you have MongoDB installed on your System! This is currently crucial for making it work.
 
+**Demo:**
+[http://thatsashort.link/demo](http://thatsashort.link/demo)
+
 ## Comming soon
 - [x] Custom short URLs
 - [x] Easy way to Delete short URLs
