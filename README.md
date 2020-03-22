@@ -34,9 +34,5 @@ Make sure you have MongoDB installed on your System! This is currently crucial f
 Help! It's not starting. I get a `MongooseServerSelectonError: connect ECONNREFUSED 127.0.0.1:27017` Error.
 > Check if you have MogoDB installed. Download it [here](https://www.mongodb.com/download-center/community)
 
-
-## Special Thanks to
-Web Dev Simplified for making a Tutorial on how to make a URL Shortener. This was my first Time ever making something like this. Check out [his Video here](https://www.youtube.com/watch?v=SLpUKAGnm-g).
-
 ## License
 [Apache](https://github.com/JNSAPH/ThatsAShort.link/blob/master/LICENSE)
