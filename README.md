@@ -15,7 +15,7 @@ http://localhost:3010/
 
 ## Usage 
 Download the Repo and follow the Steps under **Installation**.
-By Default this App will use the Port 5000. You can change it in the config.json file. Setup can differ from your Webserver Configuartion. Please go into the config.json file and change your Login Details.
+By Default this App will use the Port 3010. You can change it in the config.json file. Setup can differ from your Webserver Configuartion. Please go into the config.json file and change your Login Details.
 
 Make sure you have MongoDB installed on your System! This is currently crucial for making it work.
 
