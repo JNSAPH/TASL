@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/urlShortener', {
 
 // Set View engine and some basic express Stuff
 app.set('view engine', 'ejs')
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: false }))
 
 // User tries to access URL

@@ -1,6 +1,6 @@
 {
   "name": "thatsashortlink",
-  "version": "1.4.0",
+  "version": "1.4.7",
   "description": "",
   "main": "server.js",
   "scripts": {

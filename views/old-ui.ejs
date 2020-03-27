@@ -10,64 +10,71 @@
 
     <!-- Material Design for Bootstrap CSS -->
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-    <link rel="stylesheet" hreF="./style.css" rel="stylesheet" type="text/css">
 
     <title>ThatsAShort.link</title>
   </head>
-  <body>
-    <header>
-      <div class="content">
-        <h1>ThatsAShort.Link</h1>
-        <div class="short mx-auto container">
+  <body style="text-align: center;">
+    <div style="margin-top: 1in">
+      <h1>ThatsAShort.link</h1>
+    </div>
+
+    <div class= "container card text-center" style="margin-top: 5%">
+        <div class="card-header">
+            Add / Remove a URL
+          </div>
+        <div class="card-body">
           <form class="form-inline" action="/shorten" method="Post" style="display: inline-block;">
             <div class="row">
               <div class="form-group mx-sm-3 mb-2 bmd-form-group">
-                <input type="url" class="form-control" id="fullUrl" name="fullUrl" placeholder="Paste a Long URL">
+                <input type="url" class="form-control" id="fullUrl" name="fullUrl" placeholder="Type in your URL">
               </div>
                 <div class="form-group mx-sm-3 mb-2 bmd-form-group">
                   <input type="string" class="form-control" id="customShort" name="customShort" placeholder="Custom URL Code"><button type="submit" class="btn btn-primary mb-2">Shrink URL</button>
                 </div>
               </div>
             </form>
+
+              <hr>
+
+              <form class="form-inline" action="/delete" method="Post" style="display: inline-block;">
+                <div class="row"></div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <input type="text" class="form-control" id="delete" name="delete" placeholder="Type in your URL Code">
+                  <button type="submit" class="btn btn-primary mb-2">Delete URL Code</button>
+                </div>
+              </form>
+
+
+
+          </div>
+      </div>
+
+      <div class="container card text-center" style="margin-top: 50px">
+        <div class="card-header">
+            List of shrunken URLs
+          </div>
+        <div class="card-body">
+            <table class="table">
+                <thread>
+                    <tr>
+                        <th>Full URL</th>
+                        <th>URL Code</th>
+                        <th>Clicks</th>
+                        <th></th>
+                    </tr>
+                </thread>
+                <tbody>
+                    <% shortUrls.forEach(shortUrl => { %>
+                        <tr>
+                            <td><a href="<%= shortUrl.full  %>"><%= shortUrl.full  %></a></td>
+                            <td><a href="<%= shortUrl.short  %>"><%= shortUrl.short  %></a></td>
+                            <td><%= shortUrl.clicks  %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
         </div>
       </div>
-      <svg style="width: 100%; overflow-x: hidden; position:absolute; bottom:0; left:0;   " version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 1920 218.7" style="enable-background:new 0 0 1920 218.7;" xml:space="preserve">
-        <style type="text/css">.st0{fill:#ffffff;}</style>
-          <g id="Ebene_1-2-2-2">
-            <path class="st0" d="M1927.5,131.7v88.8H-7.5V11.8c20.2-3.5,44,79,127.2,117.4c16.1,7.4,59,22.5,109,16.2c50.5-6.4,53.9-44,96.9-47.4c47.7-3.9,56.4,41.4,107,54.5C525.1,176.6,588.7,49.7,693,65.7c50,7.6,42.8,46.4,94.9,57.5c86.8,18.6,133.1-71.6,206.9-54.5c63.2,14.6,49.9,85.4,116.1,118.1c97,48,175.9-78.8,343.2-65.6c101.6,8,113.3,58,224.1,67.6C1781.6,197.7,1869.5,162.6,1927.5,131.7z"/>
-          </g>
-      </svg>
-    </header>
-    
-
-    <div class="second">
-      <form class="form-inline" action="/delete" method="Post" style="display: inline-block; margin-bottom: 1in">
-        <div class="row"></div>
-        <div class="form-group mx-sm-3 mb-2">
-          <input type="text" class="form-control" id="delete" name="delete" placeholder="Type in your URL Code">
-          <button type="submit" class="btn btn-primary mb-2">Delete URL Code</button>
-        </div>
-      </form>
-      <table class="table">
-        <thread>
-            <tr>
-                <th>Full URL</th>
-                <th>URL Code</th>
-                <th>Clicks</th>
-                <th></th>
-            </tr>
-        </thread>
-        <tbody>
-            <% shortUrls.forEach(shortUrl => { %>
-                <tr>
-                    <td><a href="<%= shortUrl.full  %>"><%= shortUrl.full  %></a></td>
-                    <td><a href="<%= shortUrl.short  %>"><%= shortUrl.short  %></a></td>
-                    <td><%= shortUrl.clicks  %></td>
-                </tr>
-            <% }) %>
-        </tbody>
-      </table>
-    </div>
 
       <footer style="margin: 30px">
         Copyright <a href="https://jnsaph.website/">JNSAPH</a> | Version <%= package.version %> <br>
