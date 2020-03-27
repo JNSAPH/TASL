@@ -28,6 +28,7 @@ Make sure you have MongoDB installed on your System! This is currently crucial f
 - [x] Custom short URLs
 - [x] Easy way to Delete short URLs
 - [x] Login | Currently a Basic Login is Available
+- [ ] Multiuser Support
 
 ## FAQ
 
