@@ -1,4 +1,4 @@
-# ThatsAShort.link
+# ThatsAShort.link <img src="https://cdn.jnsaph.website/Github/Thatsashortlink/logo.png" width="40px">
 A simpler URL Shortener that actually works. 
 
 ## Installation
@@ -22,7 +22,7 @@ Configure your Webserver as a Reverse Proxy if needed.
 
 Make sure you have MongoDB installed on your System! This is currently crucial for making it work.
 
-![GitHub Logo](https://cdn.jnsaph.website/Github/Thatsashortlink/version2.png)
+<img src="https://cdn.jnsaph.website/Github/Thatsashortlink/version2.png" width="60%">
 
 **Demo:**
 [http://thatsashort.link/demo](http://thatsashort.link/demo)
