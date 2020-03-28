@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/urlShortener', {
 
 // Set View engine and some basic express Stuff
 app.set('view engine', 'ejs')
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
 app.use(express.urlencoded({ extended: false }))
 
 // User tries to access URL
@@ -42,8 +42,8 @@ app.use((req, res, next) => {
   }
 
   // Access denied...
-  res.set('WWW-Authenticate', 'Basic realm="401"') // change this
-  res.status(401).send('Authentication required.') // custom message
+  res.set('WWW-Authenticate', 'Basic realm="401"')
+  res.status(401).send('Authentication required.')
 
 })
 
@@ -53,8 +53,16 @@ app.get('/', async (req, res) => {
   res.render('index', { shortUrls: shortUrls , package: package })
 })
 
-// User types in URL
+// User shortens URL
 app.post('/shorten', async (req, res) => {
+
+  // Check if User supplied a URL
+  if(!req.body.fullUrl){
+    res.status(403).send('Please Type in a URL.') // custom message
+    return;
+  }
+
+  // Check if User provieded a Custom Alias
   if (req.body.customShort) {
     await ShortUrl.create({ 
         // User priveded a Custom Alias
@@ -69,6 +77,7 @@ app.post('/shorten', async (req, res) => {
   }
 
   res.redirect('/')
+
 })
 
 // User deletes URL
