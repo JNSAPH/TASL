@@ -19,7 +19,7 @@ By Default this App will use the Port 3010. You can change it in the config.json
 
 Make sure you have MongoDB installed on your System! This is currently crucial for making it work.
 
-![GitHub Logo](http://jnsaph.website/demo/preview1.png)
+![GitHub Logo](https://cdn.jnsaph.website/Github/Thatsashortlink/version2.png)
 
 **Demo:**
 [http://thatsashort.link/demo](http://thatsashort.link/demo)
