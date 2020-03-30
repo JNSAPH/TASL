@@ -48,6 +48,7 @@
           <button type="submit" class="btn btn-primary mb-2">Delete URL Code</button>
         </div>
       </form>
+      <div class="table-responsive">
       <table class="table">
         <thread>
             <tr>
@@ -60,13 +61,14 @@
         <tbody>
             <% shortUrls.forEach(shortUrl => { %>
                 <tr>
-                    <td><a href="<%= shortUrl.full  %>"><%= shortUrl.full  %></a></td>
-                    <td><a href="<%= shortUrl.short  %>"><%= shortUrl.short  %></a></td>
+                    <td style="max-width: 200px; overflow: hidden;"><a href="<%= shortUrl.full  %>"><%= shortUrl.full  %></a></td>
+                    <td style="max-width: 200px; overflow: hidden""></a><a href="<%= shortUrl.short  %>"><%= shortUrl.short  %></a></td>
                     <td><%= shortUrl.clicks  %></td>
                 </tr>
             <% }) %>
         </tbody>
       </table>
+    </div>
     </div>
 
       <footer style="margin: 30px">
