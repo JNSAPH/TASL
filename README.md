@@ -24,9 +24,6 @@ Make sure you have MongoDB installed on your System! This is currently crucial f
 
 <img src="https://cdn.jnsaph.website/Github/Thatsashortlink/version2.png" width="60%">
 
-**Demo:**
-[http://thatsashort.link/demo](http://thatsashort.link/demo)
-
 ## Comming soon
 - [x] Custom short URLs
 - [x] Easy way to Delete short URLs
