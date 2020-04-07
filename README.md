@@ -1,4 +1,4 @@
-# ThatsAShort.link <img src="https://cdn.jnsaph.website/Github/Thatsashortlink/logo.png" width="40px">
+# ThatsAShort.link <img src="https://jnsaph.website/assets/icons/TASL.svg" width="40px">
 A simpler URL Shortener that actually works. 
 
 ## Installation
