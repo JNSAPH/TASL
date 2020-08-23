@@ -1,39 +1,28 @@
-# ThatsAShort.link <img src="https://jnsaph.website/assets/icons/TASL.svg" width="40px">
-A simpler URL Shortener that actually works. 
+<p align="center">
+      <img src="assets/Logo/SmallLogo.png" width="80">
+  <h1 align="center">
+    ThatsAShort.link
+  </h1>
+</p>
 
-## Installation
-```
-git clone http://github.com/JNSAPH/ThatsAShort.link
-```
-```
-npm install
-```
-```
-npm start
-```
-```
-http://localhost:3010/
-```
+<h3 align="center">
+  A MongoDB based URL Shortener
+</h3>
 
+<h3 align="center">
+      <img src="https://sonarcloud.io/api/project_badges/quality_gate?project=JNSAPH_ThatsAShort.link"><br><br>
+      <img src="https://sonarcloud.io/api/project_badges/measure?project=JNSAPH_ThatsAShort.link&metric=sqale_rating">
+      <img src="https://sonarcloud.io/api/project_badges/measure?project=JNSAPH_ThatsAShort.link&metric=bugs">
+      <img src="https://sonarcloud.io/api/project_badges/measure?project=JNSAPH_ThatsAShort.link&metric=code_smells">
+</h3>
 
-## Usage 
-Download the Repo and follow the Steps under **Installation** and Change the Default Username an Password in [config.json](/config.json).
-Configure your Webserver as a Reverse Proxy if needed.
+## ⚙️ Installation
+This is a rewrite of the original project. If you know what you're doing you'll be able to find out how to run this. I'd advise against it tho. Please wait for the full release
 
-Make sure you have MongoDB installed on your System! This is currently crucial for making it work.
+## 📙 Usage
+Download this Repository and follow the Steps under Installation. Make sure you have MongoDB installed on your System! 
 
-<img src="https://cdn.jnsaph.website/Github/Thatsashortlink/version2.png" width="60%">
-
-## Comming soon
-- [x] Custom short URLs
-- [x] Easy way to Delete short URLs
-- [x] Login | Currently a Basic Login is Available
-- [ ] Multiuser Support
-
-## FAQ
+## 🤔 FAQ
 
 Help! It's not starting. I get a `MongooseServerSelectonError: connect ECONNREFUSED 127.0.0.1:27017` Error.
 > Check if you have MogoDB installed. Download it [here](https://www.mongodb.com/download-center/community)
-
-## License
-[Apache](https://github.com/JNSAPH/ThatsAShort.link/blob/master/LICENSE)
