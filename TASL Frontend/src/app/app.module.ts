@@ -9,6 +9,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { URLListComponent } from './urllist/urllist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewshortComponent } from './newshort/newshort.component';
+import { InfoCardComponent } from './info-card/info-card.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { NewshortComponent } from './newshort/newshort.component';
     AppComponent,
     URLListComponent,
     NewshortComponent,
+    InfoCardComponent,
   ],
   imports: [
     BrowserModule,

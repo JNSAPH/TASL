@@ -2,8 +2,9 @@
   <nb-layout-header>
     <p class="title">TASL App</p>
   </nb-layout-header>
-
   <nb-layout-column>
+    <app-info-card></app-info-card>
+    
     <app-newshort (newAdded)="list.ngOnInit()"></app-newshort>
     <app-urllist #list></app-urllist>
   </nb-layout-column>
