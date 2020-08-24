@@ -54,8 +54,7 @@ app.delete('/TASL/deleteShort/:shortUrl', (req, res) => {
 
 app.get('/:shortUrl', async (req, res) => {
     const full = await ShortUrl.findOne({ short: req.params.shortUrl })
-    res.redirect('https://' + full.full)
-    console.log(full)
+    res.redirect(full.full)
 })
 
 app.listen(port, () => {

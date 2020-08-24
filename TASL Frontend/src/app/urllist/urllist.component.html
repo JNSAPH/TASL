@@ -1,24 +1,34 @@
-<nb-card>
-    <nb-card-body>
+<nb-layout>
+    <nb-layout-column class="colored-column-warning">
+        <nb-card>
+            <nb-card-body>
 
-        <p class="title">All Shortend URLs</p>
+                <p class="title">All Shortend URLs</p>
 
-        <table style="width: 100%">
-            <thead>
-                <tr>
-                    <th>Full URL</th>
-                    <th>URL Code</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody *ngFor="let resp of response">
-                <tr>
-                    <td #full style="max-width: 200px; overflow: hidden;">{{resp.full}}</td>
-                    <td #short style="max-width: 200px; overflow: hidden">{{resp.short}}</td>
-                    <td><button nbButton status="danger" shape="round" (click)="deleteShort(resp.short)"></button></td>
-                </tr>
-            </tbody>
-        </table>
+                <table style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Full URL</th>
+                            <th>URL Code</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let resp of response">
+                        <tr>
+                            <td #full style="max-width: 200px; overflow: hidden;">{{resp.full}}</td>
+                            <td #short style="max-width: 200px; overflow: hidden">{{resp.short}}</td>
+                            <td><button nbButton status="danger" shape="round"
+                                    (click)="deleteShort(resp.short)"></button></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-    </nb-card-body>
-</nb-card>
+            </nb-card-body>
+        </nb-card>
+
+
+
+
+    </nb-layout-column>
+    <nb-layout-column class="colored-column-info">Third</nb-layout-column>
+</nb-layout>

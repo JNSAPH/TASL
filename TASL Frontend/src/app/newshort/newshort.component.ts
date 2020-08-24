@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http'
 
 @Component({
@@ -6,13 +6,19 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http'
   templateUrl: './newshort.component.html',
   styleUrls: ['./newshort.component.scss']
 })
+
+
 export class NewshortComponent {
+
+  @Output() newAdded = new EventEmitter();
 
   readonly ROOT_URL = "http://localhost:3000/TASL"
   response: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
+
+  
   makeid(length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -37,8 +43,11 @@ export class NewshortComponent {
       })
     })
     .subscribe((data) => {
-      this.response = data
+      this.newAdded.emit();
     })
+
+
   }
 
 }
+// Event name: newAdded

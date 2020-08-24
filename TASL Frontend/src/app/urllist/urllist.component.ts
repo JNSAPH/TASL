@@ -13,14 +13,20 @@ export class URLListComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
+
+
+  public ngOnInit(): void {
     this.http.get(this.ROOT_URL + '/getShortDetails')
       .subscribe((data) => {
         this.response = data
       });
   }
 
-  deleteShort(short) {
+  update() {
+    this.ngOnInit
+  }
+
+    deleteShort(short) {
     this.http.delete(this.ROOT_URL + '/deleteShort/' + short)
       .subscribe((data) => {
         this.response = data

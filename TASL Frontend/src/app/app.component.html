@@ -4,17 +4,7 @@
   </nb-layout-header>
 
   <nb-layout-column>
-    <app-newshort></app-newshort>
-    <nb-layout>
-      <nb-layout-column class="colored-column-warning">
-        <app-urllist></app-urllist>
-      </nb-layout-column>
-      <nb-layout-column class="colored-column-info">Third</nb-layout-column>
-    </nb-layout>
+    <app-newshort (newAdded)="list.ngOnInit()"></app-newshort>
+    <app-urllist #list></app-urllist>
   </nb-layout-column>
-
-  <nb-layout-footer>
-    <!-- Insert footer here -->
-  </nb-layout-footer>
-
 </nb-layout>
