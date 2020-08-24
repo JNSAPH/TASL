@@ -1,16 +1,20 @@
 <nb-layout>
-
-  <nb-layout-header fixed>
-  <!-- Insert header here -->
+  <nb-layout-header>
+    <p class="title">TASL App</p>
   </nb-layout-header>
 
   <nb-layout-column>
-    <router-outlet></router-outlet>
-    <app-urllist></app-urllist>
+    <app-newshort></app-newshort>
+    <nb-layout>
+      <nb-layout-column class="colored-column-warning">
+        <app-urllist></app-urllist>
+      </nb-layout-column>
+      <nb-layout-column class="colored-column-info">Third</nb-layout-column>
+    </nb-layout>
   </nb-layout-column>
 
-  <nb-layout-footer fixed>
-  <!-- Insert footer here -->
+  <nb-layout-footer>
+    <!-- Insert footer here -->
   </nb-layout-footer>
 
 </nb-layout>
