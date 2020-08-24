@@ -21,7 +21,7 @@ export class URLListComponent implements OnInit {
   }
 
   deleteShort(short) {
-    this.http.get(this.ROOT_URL + '/deleteShort/' + short)
+    this.http.delete(this.ROOT_URL + '/deleteShort/' + short)
       .subscribe((data) => {
         this.response = data
         this.ngOnInit()

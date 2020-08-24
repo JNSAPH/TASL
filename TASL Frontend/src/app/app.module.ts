@@ -10,6 +10,7 @@ import { URLListComponent } from './urllist/urllist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewshortComponent } from './newshort/newshort.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

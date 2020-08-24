@@ -1,9 +1,10 @@
 <nb-card>
     <nb-card-body>
       <div>
-        <input type="text" nbInput shape="round" placeholder="httos://google.com/">
-        <input type="text" nbInput shape="round" placeholder="URL Code">
-        <button nbButton status="primary" shape="round">Shorten</button>
+        <input #long type="url" nbInput shape="round" placeholder="httos://google.com/">
+        <input #short type="text" nbInput shape="round" placeholder="URL Code">
+        <button nbButton status="primary" shape="round" (click)="newShort(long.value, short.value)">Shorten</button>
+        <p>{{response | json}}</p>
       </div>
     </nb-card-body>
   </nb-card>
