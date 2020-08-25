@@ -1,0 +1,19 @@
+<div>
+    <nb-card accent="{{accent}}">
+        <nb-card-header>
+            <p class="title">Login</p>
+        </nb-card-header>
+        <nb-card-body>
+
+                <input #uname type="text" nbInput shape="round" fieldSize="large" placeholder="Username" required>
+                <br><br>
+                <input #pword type="password" nbInput shape="round" fieldSize="large" placeholder="Password" required>
+                <br><br>
+                <button nbButton status="primary" (click)="login(uname.value, pword.value)">Login</button>
+                <br><br>
+                <b>{{error | json}}</b>
+                <p>If this is the first that you login please change the Password & Username in the Config File!</p>
+ 
+        </nb-card-body>
+    </nb-card>
+</div>

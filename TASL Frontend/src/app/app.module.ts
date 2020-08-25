@@ -10,6 +10,9 @@ import { URLListComponent } from './urllist/urllist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewshortComponent } from './newshort/newshort.component';
 import { InfoCardComponent } from './info-card/info-card.component';
+import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -18,8 +21,20 @@ import { InfoCardComponent } from './info-card/info-card.component';
     URLListComponent,
     NewshortComponent,
     InfoCardComponent,
+    LoginComponent,
+    DashboardComponent,
   ],
   imports: [
+    RouterModule.forRoot([
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: '',
+        component: InfoCardComponent
+      },
+    ]),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

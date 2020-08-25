@@ -16,6 +16,7 @@ export class InfoCardComponent implements OnInit {
     this.http.get(this.ROOT_URL + '/getStats')
     .subscribe((data) => {
       this.response = data
+      console.log(data)
     });
   }
 

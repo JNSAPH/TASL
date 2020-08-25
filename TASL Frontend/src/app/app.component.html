@@ -3,9 +3,6 @@
     <p class="title">TASL App</p>
   </nb-layout-header>
   <nb-layout-column>
-    <app-info-card #infocard></app-info-card>
-    
-    <app-newshort #addui (newAdded)="list.ngOnInit(); infocard.ngOnInit()"></app-newshort>
-    <app-urllist #list (removedEntry)="infocard.ngOnInit();"></app-urllist>
+    <router-outlet></router-outlet>
   </nb-layout-column>
 </nb-layout>
