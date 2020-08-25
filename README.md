@@ -16,6 +16,11 @@
       <img src="https://sonarcloud.io/api/project_badges/measure?project=JNSAPH_ThatsAShort.link&metric=code_smells">
 </h3>
 
+<h3 align="center">
+      Progress:<br>
+      <img src="https://progress-bar.dev/60/?scale=100&width=200&color=191922&suffix=%">
+</h3>
+
 ## ⚙️ Installation
 This is a rewrite of the original project. If you know what you're doing you'll be able to find out how to run this. I'd advise against it tho. Please wait for the full release
 
