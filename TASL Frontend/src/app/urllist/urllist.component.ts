@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 @Component({
   selector: 'app-urllist',
@@ -8,12 +8,13 @@ import { HttpClient } from '@angular/common/http'
 })
 export class URLListComponent implements OnInit {
 
+  @Output() removedEntry = new EventEmitter();
+
   readonly ROOT_URL = "http://localhost:3000/TASL"
   response: any;
+  website_url: string = document.location.origin;
 
   constructor(private http: HttpClient) { }
-
-
 
   public ngOnInit(): void {
     this.http.get(this.ROOT_URL + '/getShortDetails')
@@ -22,16 +23,16 @@ export class URLListComponent implements OnInit {
       });
   }
 
-  update() {
-    this.ngOnInit
-  }
-
-    deleteShort(short) {
-    this.http.delete(this.ROOT_URL + '/deleteShort/' + short)
-      .subscribe((data) => {
-        this.response = data
-        this.ngOnInit()
-      });
-  }
-
+  // Currently a POST request
+  deleteShort(short) {
+    this.http.post(this.ROOT_URL + '/deleteShort', short, {
+      headers: new HttpHeaders({
+        'short': short
+      })
+    })
+    .subscribe((data: any) => {
+      this.ngOnInit();
+      this.removedEntry.emit();
+    })
+  } 
 }

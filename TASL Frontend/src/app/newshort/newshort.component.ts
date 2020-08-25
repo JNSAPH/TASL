@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http'
+import { NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'app-newshort',
@@ -15,10 +16,8 @@ export class NewshortComponent {
   readonly ROOT_URL = "http://localhost:3000/TASL"
   response: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastrService: NbToastrService) {}
 
-
-  
   makeid(length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -31,22 +30,34 @@ export class NewshortComponent {
 
 
   newShort(long, short) {
-    const head = {
-      long: long,
-      short: short
-    }
-
-    this.http.post(this.ROOT_URL + '/createShort', head, {
+    this.http.post(this.ROOT_URL + '/createShort', long, {
       headers: new HttpHeaders({
         'long':long,
         'short':!short ? this.makeid(5) : short
       })
     })
-    .subscribe((data) => {
+    .subscribe((data: any) => {
       this.newAdded.emit();
+
+      if (data.code == 400) {
+        this.showToast('top-right', 'danger', 'Error!', 'Please supply a URL before clicking on Shorten');
+      } else {
+        this.showToast('top-right', 'success', "Success!", 'New Short-URL Generated');
+      }
+
+
+
+
     })
+  }
 
+  private index: number = 0;
 
+  showToast(position, status, head, description) {
+    this.toastrService.show(
+      description,
+      head,
+      { position, status });
   }
 
 }

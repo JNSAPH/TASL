@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-info-card',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info-card.component.scss']
 })
 export class InfoCardComponent implements OnInit {
+  readonly ROOT_URL = "http://localhost:3000/TASL"
+  response: any;
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.http.get(this.ROOT_URL + '/getStats')
+    .subscribe((data) => {
+      this.response = data
+    });
   }
 
 }

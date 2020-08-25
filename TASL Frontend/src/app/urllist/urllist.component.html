@@ -15,7 +15,7 @@
                     <tbody *ngFor="let resp of response">
                         <tr>
                             <td #full style="max-width: 200px; overflow: hidden;">{{resp.full}}</td>
-                            <td #short style="max-width: 200px; overflow: hidden">{{resp.short}}</td>
+                            <td #short style="max-width: 200px; overflow: hidden"><a href="{{website_url + '/' + resp.short}}">{{resp.short}}</a></td>
                             <td><button nbButton status="danger" shape="round"
                                     (click)="deleteShort(resp.short)"></button></td>
                         </tr>
