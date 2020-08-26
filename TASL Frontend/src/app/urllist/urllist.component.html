@@ -1,5 +1,5 @@
-<nb-layout>
-    <nb-layout-column>
+<div class="row">
+    <div class="col">
         <nb-card>
             <nb-card-body>
                 <p class="title">All Shortend URLs</p>
@@ -9,6 +9,7 @@
                         <tr>
                             <th>Full URL</th>
                             <th>URL Code</th>
+                            <th>Clicks</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -16,30 +17,22 @@
                         <tr>
                             <td #full style="max-width: 200px; overflow: hidden;">{{resp.full}}</td>
                             <td #short style="max-width: 200px; overflow: hidden"><a href="{{website_url + '/' + resp.short}}">{{resp.short}}</a></td>
-                            <td><button nbButton status="danger" shape="round"
-                                    (click)="deleteShort(resp.short)"></button></td>
+                            <td>{{resp.clicks}}</td>
+                            <td><button nbButton status="danger" shape="round" (click)="deleteShort(resp.short)"></button></td>
                         </tr>
                     </tbody>
                 </table>
 
             </nb-card-body>
         </nb-card>
-
-
-
-
-    </nb-layout-column>
-    <nb-layout-column>
-        <nb-card>
-            <nb-card-body>
-                <!--
-                    - Link Preview
-                    - Settings
-                    - Stats
-                -->
-            </nb-card-body>
-        </nb-card>
-
-
-    </nb-layout-column>
-</nb-layout>
+    </div>
+    <div class="col">
+        <nb-card-body>
+            <!--
+                - Link Preview
+                - Settings
+                - Stats
+            -->
+        </nb-card-body>
+    </div>
+</div>
