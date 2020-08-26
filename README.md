@@ -1,5 +1,5 @@
 <p align="center">
-      <img src="assets/Logo/SmallLogo.png" width="80">
+      <img src="assets/Logos/SmallLogo.png" width="80">
   <h1 align="center">
     ThatsAShort.link
   </h1>
