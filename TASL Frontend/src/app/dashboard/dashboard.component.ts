@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
      {
-       if (localStorage.getItem('loggedin') == "false") this.router.navigateByUrl("/login");
+       if (localStorage.getItem('loggedin') == "false") this.router.navigateByUrl("admin/login");
     }
   }
 

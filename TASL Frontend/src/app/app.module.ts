@@ -25,16 +25,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DashboardComponent,
   ],
   imports: [
-    RouterModule.forRoot([
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: '',
-        component: InfoCardComponent
-      },
-    ]),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

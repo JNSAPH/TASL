@@ -5,9 +5,9 @@
         </nb-card-header>
         <nb-card-body>
 
-                <input #uname type="text" nbInput shape="round" fieldSize="large" placeholder="Username" required>
+                <input #uname type="text" nbInput shape="round" fieldSize="large" placeholder="Username" value="123" required> <!-- DELETE VALUE AFTER DEVELOPMENT -->
                 <br><br>
-                <input #pword type="password" nbInput shape="round" fieldSize="large" placeholder="Password" required>
+                <input #pword type="password" nbInput shape="round" fieldSize="large" placeholder="Password" value="123" required> <!-- DELETE VALUE AFTER DEVELOPMENT -->
                 <br><br>
                 <button nbButton status="primary" (click)="login(uname.value, pword.value)">Login</button>
                 <br><br>

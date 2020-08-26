@@ -5,7 +5,7 @@ import { InfoCardComponent } from './info-card/info-card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
+  { path: 'admin/login', component: LoginComponent},
   { path: '', component: DashboardComponent},
 ];
 
