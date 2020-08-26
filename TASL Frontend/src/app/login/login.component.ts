@@ -18,5 +18,16 @@ export class LoginComponent {
 
   login(uname, pword){
     localStorage.setItem('loggedin', 'true');
+    this.http.post(this.ROOT_URL + '/login', {}, {
+      headers: new HttpHeaders({
+        'username':uname,
+        'password':pword
+      }),
+    })
+    .subscribe((data: any) => {
+      if (data.code == 200) this.accent = "success"
+      if (data.code !== 200) this.accent = "danger"
+      this.error = data.message;
+    })
   }
 }

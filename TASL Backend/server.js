@@ -9,23 +9,17 @@ mongoose.connect('mongodb://localhost/urlShortener', {
 const express = require('express')
 const cors = require('cors')
 const session = require('express-session')
-const bodyParser = require('body-parser')
 const port = 3000
 
 // Express packages
 const app = express();
-app.use(cors({
-    origin: [
-        "http://localhost:4200"
-    ], credentials: true
-}));
+app.use(cors({origin: ["http://localhost:4200"], credentials: true}));
 app.use(session({
     secret: "require('crypto').randomBytes(1024).toString('base64')",
     name:'TASL-Login-Cookie',
     resave: true,
     saveUninitialized: false,
 }));
-app.use(bodyParser.urlencoded({ extended: true }));
 
 const config = require('./config.json')
 
@@ -81,8 +75,8 @@ app.post('/TASL/deleteShort', (req, res) => {
 })
 
 app.get('/TASL/getStats', async (req, res) => {
-    console.log("/getStats | " + JSON.stringify(req.session))
-    //if (req.session.loggedin == false || req.session.loggedin == undefined) return res.send({ code: 401 }).status(401) // Check if User is Logged in
+    console.log("/getStats | " + JSON.stringify(req.session.loggedin))
+    if (req.session.loggedin == false || req.session.loggedin == undefined) return res.send({ code: 401 }).status(401) // Check if User is Logged in
 
     let clicks = 0;
     let shortUrls = (await ShortUrl.find())
@@ -99,18 +93,11 @@ app.get('/TASL/getStats', async (req, res) => {
     })
 })
 
-
-app.get('/TAS/login', (req, res) => {
-    req.session.loggedin = true;
-    console.log("/login DOUP success | " + JSON.stringify(req.session))
-    res.send(req.session.loggedin)
-})
-
 app.post('/TASL/login', (req, res) => {
     let adminPassword = config.password;
     let adminUsername = config.username;
 
-    console.log(req.headers)
+    console.log(req.session.loggedin)
 
     if (adminPassword == req.headers.password && adminUsername == req.headers.username) {
         req.session.loggedin = true;
