@@ -27,6 +27,7 @@ export class URLListComponent implements OnInit {
   deleteShort(short) {
     this.http.post(this.ROOT_URL + '/deleteShort', short, {
       headers: new HttpHeaders({
+        'authorization':localStorage.getItem('jwt'),
         'short': short
       })
     })

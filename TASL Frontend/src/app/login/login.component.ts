@@ -25,8 +25,17 @@ export class LoginComponent {
       }),
     })
     .subscribe((data: any) => {
-      if (data.code == 200) this.accent = "success" && localStorage.setItem("loggedin", "true")
-      if (data.code !== 200) this.accent = "danger" && localStorage.setItem("loggedin", "false")
+      console.log(data)
+      if (data.code == 200) {
+        this.accent = "success" 
+        localStorage.setItem("loggedin", "true") 
+        localStorage.setItem("jwt", data.token)
+        this.router.navigate(['/'])
+      } else {
+        this.accent = "danger" 
+        localStorage.clear();
+      }
+
       this.error = data.message;
     })
   }

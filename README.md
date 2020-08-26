@@ -18,7 +18,7 @@
 
 <h3 align="center">
       Progress:<br>
-      <img src="https://progress-bar.dev/60/?scale=100&width=200&color=191922&suffix=%">
+      <img src="https://progress-bar.dev/80/?scale=100&width=200&color=191922&suffix=%">
 </h3>
 
 ## ⚙️ Installation

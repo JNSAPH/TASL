@@ -32,6 +32,7 @@ export class NewshortComponent {
   newShort(long, short) {
     this.http.post(this.ROOT_URL + '/createShort', long, {
       headers: new HttpHeaders({
+        'Authorization':localStorage.getItem('jwt'),
         'long':long,
         'short':!short ? this.makeid(5) : short
       })
@@ -45,14 +46,9 @@ export class NewshortComponent {
         this.showToast('top-right', 'success', "Success!", 'New Short-URL Generated');
       }
 
-
-
-
     })
   }
-
-  private index: number = 0;
-
+  
   showToast(position, status, head, description) {
     this.toastrService.show(
       description,
