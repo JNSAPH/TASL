@@ -1,7 +1,7 @@
 <p align="center">
       <img src="assets/Logos/SmallLogo.png" width="80">
   <h1 align="center">
-    ThatsAShort.link
+    TASL
   </h1>
 </p>
 
