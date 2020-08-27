@@ -49,6 +49,9 @@ Use this only if you want change something about TASL and you have experience wi
 
   That's it. TASL is installed. Check your Server IP using Port 3000. You should be redirect to http://YOUR-IP:3000/admin/login where you can login with the Username and Password you created in Step 3.
 
+## **Docker**
+- Comming soon(tm)
+
 # 📙 Usage
 Comming Soon(tm)
 
