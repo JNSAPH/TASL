@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Angular
-/TASL Backend/public/*
+/Backend/public
