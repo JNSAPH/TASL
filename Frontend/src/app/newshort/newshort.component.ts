@@ -14,6 +14,7 @@ export class NewshortComponent {
   @Output() newAdded = new EventEmitter();
 
   readonly ROOT_URL = "http://localhost:3000/TASL"
+  //readonly ROOT_URL = document.location.origin + "/TASL"
   response: any;
 
   constructor(private http: HttpClient, private toastrService: NbToastrService) {}

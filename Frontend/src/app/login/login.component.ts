@@ -10,6 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 export class LoginComponent {
 
   readonly ROOT_URL = "http://localhost:3000/TASL"
+  //readonly ROOT_URL = document.location.origin + "/TASL"
   response: any;
   accent: any;
   error: any;
