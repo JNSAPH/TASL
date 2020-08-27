@@ -20,6 +20,9 @@
       Progress:<br>
       <img src="https://progress-bar.dev/99/?scale=100&width=200&color=191922&suffix=%">
 </h3>
+<h3 align="center">
+      <img src="assets/Assets/mac.png" width="750px">
+</h3>
 
 ## ⚙️ Installation
 ### Before installing
