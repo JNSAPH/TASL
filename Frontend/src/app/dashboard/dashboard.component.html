@@ -1,0 +1,4 @@
+<app-info-card #infocard></app-info-card>
+    
+<app-newshort #addui (newAdded)="list.ngOnInit(); infocard.ngOnInit()"></app-newshort>
+<app-urllist #list (removedEntry)="infocard.ngOnInit();"></app-urllist>

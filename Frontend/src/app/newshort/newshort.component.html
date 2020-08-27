@@ -1,0 +1,18 @@
+<nb-card>
+    <nb-card-body>
+      <div style="width: 100%">
+        <p class="title">Create new Short URL</p>
+        <div class="row" style="text-align: center">
+          <div class="col">
+            <label>
+              <input #long type="url" nbInput shape="round" fullWidth="true" placeholder="httos://google.com/">
+            </label>
+          </div>
+          <div>
+            <input #short type="text" nbInput shape="round" placeholder="URL Code">
+            <button nbButton status="primary" shape="round" (click)="newShort(long.value, short.value)">Shorten</button> <!-- EMIT EVENT PLS -->
+          </div>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
