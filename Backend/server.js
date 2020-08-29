@@ -18,6 +18,18 @@ mongoose.connect('mongodb://localhost/urlShortener', {
 const port = 3000
 const config = require('./config.json')
 
+// Middleware for Authentication
+function aphAuth(req, res, next){
+    if (!req.headers.authorization || !jwt.verify(req.headers.authorization, config.secretkey)) 
+    {
+        console.log("Invalid request.")
+        return res.send({code: 401, message:"Unauthorized"}).status(401)
+    }
+    console.log("Request valid.")
+    next();
+}
+
+
 /*
 *   @GET - / | Serve Index
 *
@@ -35,10 +47,13 @@ app.get('/', (req, res) => {
 */
 app.get('/:shortUrl', async (req, res) => {
     const full = await ShortUrl.findOne({ short: req.params.shortUrl })
-    full.clicks++
-    full.save();
-
-    res.redirect(full.full)
+    try {
+        full.clicks++
+        full.save();
+        res.redirect(full.full)
+    } catch (error) {
+        res.send("The URL you were trying to access doesn't exist.").status(404)
+    }
 })
 
 /*
@@ -47,9 +62,7 @@ app.get('/:shortUrl', async (req, res) => {
 *   Response:
 *       - 401: Unauthorized Access. ||  201: Entry created
 */
-app.post('/TASL/createShort/', async (req, res) => {
-    if (!req.headers.authorization || !jwt.verify(req.headers.authorization, config.secretkey)) return res.send({code: 401, message:"Unauthorized"}).status(401)
-    
+app.post('/TASL/createShort/', aphAuth, async (req, res) => {
     if (!req.headers.long || !req.headers.short) return res.send({ code: 400 }).status(400)
     if (await ShortUrl.exists({ short: req.headers.short })) return res.send({ code: 400, message: "Short ID already in use." })
 
@@ -99,9 +112,7 @@ app.get('/TASL/getShortDetails/', async (req, res) => {
 *   Response:
 *       - 401: Unauthorized Access. ||  200: Entry Deleted
 */
-app.post('/TASL/deleteShort', (req, res) => {
-    if (!req.headers.authorization || !jwt.verify(req.headers.authorization, config.secretkey)) return res.send({code: 401, message:"Unauthorized"}).status(401)
-   
+app.post('/TASL/deleteShort', aphAuth, (req, res) => {  
     ShortUrl.deleteOne({ short: req.headers.short }, function (err) {
         if (err) return res.send(err)
     })

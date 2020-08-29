@@ -10,7 +10,7 @@ export class URLListComponent implements OnInit {
 
   @Output() removedEntry = new EventEmitter();
 
-  readonly ROOT_URL = document.location.origin + "/TASL"
+  readonly ROOT_URL = "http://localhost:3000/TASL"
   //readonly ROOT_URL = document.location.origin + "/TASL"
   response: any;
   website_url: string = document.location.origin;
