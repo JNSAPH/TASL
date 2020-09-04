@@ -10,9 +10,12 @@ app.use(cors({origin: ["http://localhost:4200"], credentials: true}));
 // Mongoose
 const mongoose = require('mongoose')
 const ShortUrl = require('./models/shortUrl')
+const Accounts = require('./models/accounts')
 mongoose.connect('mongodb://localhost/urlShortener', {
     useNewUrlParser: true, useUnifiedTopology: true
 })
+
+const bcrypt = require('bcrypt');
 
 // Config
 const port = 3000
@@ -28,7 +31,6 @@ function aphAuth(req, res, next){
     console.log("Request valid.")
     next();
 }
-
 
 /*
 *   @GET - / | Serve Index
@@ -145,25 +147,54 @@ app.get('/TASL/getStats', async (req, res) => {
 /*
 *   @POST - login | Generate JWT and send it to Client
 */
-app.post('/TASL/login', (req, res) => {
-    let adminPassword = config.password;
-    let adminUsername = config.username;
+app.post('/TASL/login', async(req, res) => {
+    let masterUsername = config.username;
+    let masterPassword = config.password;
 
-    if (adminPassword == req.headers.password && adminUsername == req.headers.username) {
-        // Login correct
-        let payload = { subject: adminUsername}
-        let token = jwt.sign(payload, config.secretkey)
+    var username = await Accounts.findOne({ "username": req.headers.username })
+    try {
+        if(await bcrypt.compare(req.headers.password, username.password) || req.headers.username == masterUsername && req.headers.password == masterPassword) {
+            // Password correct
+            let payload = { subject: req.headers.username}
+            let token = jwt.sign(payload, config.secretkey)
 
-        return res.send({ code: 200, message: "Logged in.", token: token}).status(200)
-    } else {
-        // Login incorrect
-        //req.session.loggedin = false;
+            return res.send({ code: 200, message: "Logged in.", token: token}).status(200)
+        } else {
+            // Password incorrect
+            return res.send({
+                code: 418,
+                message: "Incorrect Username and or Password."
+            }).status(418)
+        }
+    } catch (error) {
+        // Account doesn't exist
         return res.send({
-            code: 418,
-            message: "Incorrect Username and or Password."
-        }).status(418)
+            code: 500,
+            message: "Account doesn't exist."
+        }).status(500)
     }
 })
+
+/*
+*   @POST - login | Generate JWT and send it to Client
+*/
+app.post('/TASL/register', async(req, res) => {
+    var username = await Accounts.findOne({ "username": req.headers.username })
+    try {
+        console.log(username.username)
+    } catch (error) {
+        Accounts.create({
+            username: req.headers.username,
+            password: await bcrypt.hash(req.headers.password, 10)
+        })
+        return res.send("Account created.")
+    }
+
+    return res.send("Account already exists.")
+})
+
+
+
 
 app.listen(port, () => {
     console.log(`ThatsaShort.link Backend listening at http://localhost:${port}`)
