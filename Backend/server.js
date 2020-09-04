@@ -23,8 +23,7 @@ const config = require('./config.json')
 
 // Middleware for Authentication
 function aphAuth(req, res, next){
-    if (!req.headers.authorization || !jwt.verify(req.headers.authorization, config.secretkey)) 
-    {
+    if (!req.headers.authorization || !jwt.verify(req.headers.authorization, config.secretkey)) {
         console.log("Invalid request.")
         return res.send({code: 401, message:"Unauthorized"}).status(401)
     }
@@ -140,7 +139,8 @@ app.get('/TASL/getStats', async (req, res) => {
 
     res.send({
         totalUrls: shortUrls.length,
-        totalClicks: clicks
+        totalClicks: clicks,
+        totalAccounts: Accounts.length
     })
 })
 
@@ -178,7 +178,8 @@ app.post('/TASL/login', async(req, res) => {
 /*
 *   @POST - login | Generate JWT and send it to Client
 */
-app.post('/TASL/register', async(req, res) => {
+app.post('/TASL/register', aphAuth, async(req, res) => {
+    if(req.headers.master !== config.password) return res.send({"message":"Master Password required"})
     var username = await Accounts.findOne({ "username": req.headers.username })
     try {
         console.log(username.username)
@@ -187,10 +188,10 @@ app.post('/TASL/register', async(req, res) => {
             username: req.headers.username,
             password: await bcrypt.hash(req.headers.password, 10)
         })
-        return res.send("Account created.")
+        return res.send({"message":"Account created."})
     }
 
-    return res.send("Account already exists.")
+    return res.send({"message":"Account already exists."})
 })
 
 

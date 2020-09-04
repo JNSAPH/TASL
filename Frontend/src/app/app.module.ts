@@ -13,6 +13,8 @@ import { InfoCardComponent } from './info-card/info-card.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AccountListComponent } from './account-list/account-list.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     InfoCardComponent,
     LoginComponent,
     DashboardComponent,
+    AccountListComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
