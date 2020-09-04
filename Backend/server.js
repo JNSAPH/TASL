@@ -181,6 +181,7 @@ app.post('/TASL/login', async(req, res) => {
 app.post('/TASL/register', aphAuth, async(req, res) => {
     if(req.headers.master !== config.password) return res.send({"message":"Master Password required"})
     var username = await Accounts.findOne({ "username": req.headers.username })
+    
     try {
         console.log(username.username)
     } catch (error) {
