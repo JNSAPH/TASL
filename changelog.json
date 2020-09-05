@@ -1,10 +1,14 @@
 [
     {
-        "message":"<ul><li>Added Account creation Feature</li><li>Added User List</li></ul>",
-        "version":"2.1"
+        "title":"Update",
+        "message":"Message",
+        "version":"2.1",
+        "url":"https://example.com"
     },
     {
-        "message":"<ul><li>New UI</li><li>New Backend</li><li>Frontend in Agular</li><li>New Login Interface</li><li>Stats at Top of the Page</li></ul>",
-        "version":"2.0"
+        "title":"Lorem Ispum",
+        "message":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
+        "version":"2.0",
+        "url":"https://example.com"
     }
 ]
