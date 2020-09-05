@@ -1,0 +1,20 @@
+<div>
+    <nb-card accent="{{accent}}">
+        <nb-card-header>
+            <p class="title">Add Account</p>
+        </nb-card-header>
+        <nb-card-body>
+
+                <input #uname type="text" nbInput shape="round" fieldSize="large" placeholder="Username" required> 
+                <br><br>
+                <input #pword type="password" nbInput shape="round" fieldSize="large" placeholder="Password" required>
+                <br><br>
+                <input #master type="password" nbInput shape="round" fieldSize="large" placeholder="Master Password" required>
+                <br><br>
+                <button nbButton status="primary" (click)="register(uname.value, pword.value, master.value)">Add Account</button>
+                <br><br>
+                <b>{{error}}</b>
+ 
+        </nb-card-body>
+    </nb-card>
+</div>

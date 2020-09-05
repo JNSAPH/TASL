@@ -1,0 +1,43 @@
+<div class="row" style="text-align: center">
+    <div class="col">
+        <nb-card>
+            <nb-card-body>
+                <p class="title">You're logged in as</p>
+                <p class="description">{{user}}</p>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col">
+        <nb-card>
+            <nb-card-body>
+                <p class="title">Add new Account</p>
+                <p class="description"><button routerLink="/admin/register" nbButton>Click here</button></p>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col">
+
+    </div>
+</div>
+
+<nb-card>
+    <nb-card-body>
+        <table style="width: 100%" summary="List of all URLs">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Creation Date</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let resp of response">
+                <tr>
+                    <td #uname>{{resp.username}}</td>
+                    <td>{{resp.creationDate}}</td>
+                    <td><button nbButton status="danger" shape="round" (click)="deleteAccount(resp.username)"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </nb-card-body>
+</nb-card>

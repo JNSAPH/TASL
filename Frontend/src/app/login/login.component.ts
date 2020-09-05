@@ -31,6 +31,7 @@ export class LoginComponent {
         this.accent = "success" 
         localStorage.setItem("loggedin", "true") 
         localStorage.setItem("jwt", data.token)
+        localStorage.setItem("username", uname)
         this.router.navigate(['/'])
       } else {
         this.accent = "danger" 

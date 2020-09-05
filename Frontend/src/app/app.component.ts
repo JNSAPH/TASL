@@ -25,4 +25,6 @@ export class AppComponent{
   clearLocalStorage(event){
       localStorage.clear();
   }
+
+ 
 }

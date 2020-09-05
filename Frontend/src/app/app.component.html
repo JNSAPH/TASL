@@ -1,11 +1,13 @@
 <nb-layout>
   <nb-layout-header>
-    <p class="title">TASL App</p>
+    <a routerLink="/"><p class="title">TASL App</p></a>
 
     <div class="right">
-      <button shape="round" nbButton *ngIf="checkStatus()" (click)="logout()">
-        Logout
-      </button>
+      <nb-select placeholder="Menu" shape="round">
+        <nb-option routerLink="/">Dashboard</nb-option>
+        <nb-option routerLink="/admin/users">Accounts</nb-option>
+        <nb-option *ngIf="checkStatus()" (click)="logout()">Logout</nb-option>
+      </nb-select>
     </div>
   </nb-layout-header>
   <nb-layout-column>
