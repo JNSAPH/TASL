@@ -40,10 +40,12 @@ Make sure you have Node, npm and MongoDB installed. Depending on which Webserver
 Use this only if you want change something about TASL and you have experience with Node & Angular. You should install [Angular CLI](https://cli.angular.io/)!
 - Download the Repository and enter the Direcotry you've saved the Project in.
   - The folder **Frontend** will contain everything Angular and the folder **Backend** will contain the Node Backend
-  - Replace `readonly ROOT_URL = "http://localhost:3000/TASL"` with `readonly ROOT_URL = document.location.origin + "/TASL"` in /src/app/info-card.component.ts
-  - Replace `readonly ROOT_URL = "http://localhost:3000/TASL"` with `readonly ROOT_URL = document.location.origin + "/TASL"` in /src/app/login.component.ts
-  - Replace `readonly ROOT_URL = "http://localhost:3000/TASL"` with `readonly ROOT_URL = document.location.origin + "/TASL"` in /src/app/newshort.component.ts
-  - Replace `readonly ROOT_URL = "http://localhost:3000/TASL"` with `readonly ROOT_URL = document.location.origin + "/TASL"` in /src/app/infourllist.component.ts
+  - Replace `readonly ROOT_URL = "http://localhost:3000/TASL"` with `readonly ROOT_URL = document.location.origin + "/TASL"` in /src/app/info-card/info-card.component.ts
+  - Replace `readonly ROOT_URL = "http://localhost:3000/TASL"` with `readonly ROOT_URL = document.location.origin + "/TASL"` in /src/app/login/login.component.ts
+  - Replace `readonly ROOT_URL = "http://localhost:3000/TASL"` with `readonly ROOT_URL = document.location.origin + "/TASL"` in /src/app/newshort/newshort.component.ts
+  - Replace `readonly ROOT_URL = "http://localhost:3000/TASL"` with `readonly ROOT_URL = document.location.origin + "/TASL"` in /src/app/infourllist/infourllist.component.ts
+  - Replace `readonly ROOT_URL = "http://localhost:3000/TASL"` with `readonly ROOT_URL = document.location.origin + "/TASL"` in /src/app/account-list/account-list.component.ts
+  - Replace `readonly ROOT_URL = "http://localhost:3000/TASL"` with `readonly ROOT_URL = document.location.origin + "/TASL"` in /src/app/register/register.component.ts
   - Enter the folder **Frontend** and type into a Termianl Window `npm run production`
   - After this process has finished open the directory **Backend**. A new folder containing the compiled front end should now have appeard
   - Open the config.json file and enter a Username, Password and secretKey. (The Secret Key will be used to generate your Login Token.)
