@@ -9,6 +9,10 @@ const accountSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  creationDate: {
+    type: String,
+    required: true
+  },
 })
 
 module.exports = mongoose.model('Accounts', accountSchema)

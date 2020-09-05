@@ -5,7 +5,7 @@ const cors = require('cors')
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
-app.use(cors({origin: ["http://localhost:4200"], credentials: true}));
+app.use(cors({ origin: ["http://localhost:4200"], credentials: true }));
 
 // Mongoose
 const mongoose = require('mongoose')
@@ -22,10 +22,10 @@ const port = 3000
 const config = require('./config.json')
 
 // Middleware for Authentication
-function aphAuth(req, res, next){
+function aphAuth(req, res, next) {
     if (!req.headers.authorization || !jwt.verify(req.headers.authorization, config.secretkey)) {
         console.log("Invalid request.")
-        return res.send({code: 401, message:"Unauthorized"}).status(401)
+        return res.send({ code: 401, message: "Unauthorized" }).status(401)
     }
     console.log("Request valid.")
     next();
@@ -103,7 +103,7 @@ app.get('/TASL/getShortDetails/:shortUrl', async (req, res) => {
             - short: User given Short ID
             - __v:
 */
-app.get('/TASL/getShortDetails/', async (req, res) => {
+app.post('/TASL/getShortDetails/', aphAuth, async (req, res) => {
     res.send(await ShortUrl.find()).status(200)
 })
 
@@ -113,7 +113,7 @@ app.get('/TASL/getShortDetails/', async (req, res) => {
 *   Response:
 *       - 401: Unauthorized Access. ||  200: Entry Deleted
 */
-app.post('/TASL/deleteShort', aphAuth, (req, res) => {  
+app.post('/TASL/deleteShort', aphAuth, (req, res) => {
     ShortUrl.deleteOne({ short: req.headers.short }, function (err) {
         if (err) return res.send(err)
     })
@@ -131,6 +131,7 @@ app.post('/TASL/deleteShort', aphAuth, (req, res) => {
 app.get('/TASL/getStats', async (req, res) => {
     let clicks = 0;
     let shortUrls = (await ShortUrl.find())
+    let accounts = (await Accounts.find())
 
     for (let index = 0; index < shortUrls.length; index++) {
         const element = shortUrls[index];
@@ -140,8 +141,31 @@ app.get('/TASL/getStats', async (req, res) => {
     res.send({
         totalUrls: shortUrls.length,
         totalClicks: clicks,
-        totalAccounts: Accounts.length
+        totalAccounts: accounts.length
     })
+})
+
+/*
+*   @GET - getAccounts | Get Username & Creationdate of Accounts
+*
+*   Response:
+*       - username: Username of Accounts
+        - CreationDate: When was the Account created
+*/
+app.post('/TASL/getAccounts', aphAuth, async (req, res) => {
+    let accounts = await Accounts.find();
+    let accountList = []
+
+    for (let index = 0; index < accounts.length; index++) {
+        const element = accounts[index];
+        accountList[index] = {
+            username: element.username,
+            creationDate: element.creationDate
+        }
+        //accountList[1].username = element.username 
+    }
+
+    res.send(accountList).status(200)
 })
 
 /*
@@ -152,8 +176,9 @@ app.post('/TASL/login', async(req, res) => {
     let masterPassword = config.password;
 
     var username = await Accounts.findOne({ "username": req.headers.username })
+    console.log(username)
     try {
-        if(await bcrypt.compare(req.headers.password, username.password) || req.headers.username == masterUsername && req.headers.password == masterPassword) {
+        if((req.headers.username == masterUsername && req.headers.password == masterPassword) || await bcrypt.compare(req.headers.password, username.password)) {
             // Password correct
             let payload = { subject: req.headers.username}
             let token = jwt.sign(payload, config.secretkey)
@@ -178,21 +203,23 @@ app.post('/TASL/login', async(req, res) => {
 /*
 *   @POST - login | Generate JWT and send it to Client
 */
-app.post('/TASL/register', aphAuth, async(req, res) => {
-    if(req.headers.master !== config.password) return res.send({"message":"Master Password required"})
+app.post('/TASL/register', aphAuth, async (req, res) => {
+    if (req.headers.master !== config.password) return res.send({ "message": "Master Password required" }).status(401)
     var username = await Accounts.findOne({ "username": req.headers.username })
-    
+
     try {
         console.log(username.username)
     } catch (error) {
         Accounts.create({
             username: req.headers.username,
-            password: await bcrypt.hash(req.headers.password, 10)
+            password: await bcrypt.hash(req.headers.password, 10),
+            creationDate: new Date().toLocaleString()
         })
-        return res.send({"message":"Account created."})
+        console.log(new Date().toLocaleString())
+        return res.send({ "message": "Account created.", "code": 201 }).status(201)
     }
 
-    return res.send({"message":"Account already exists."})
+    return res.send({ "message": "Account already exists.", "code": 409 }).status(409)
 })
 
 

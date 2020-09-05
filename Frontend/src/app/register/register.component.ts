@@ -28,6 +28,11 @@ export class RegisterComponent {
       }),
     })
       .subscribe((data: any) => {
+        if(data.code == 201) {
+          this.accent = "success";
+        } else {
+          this.accent = "danger";
+        }
         console.log(data)
         this.error = data.message;
       })

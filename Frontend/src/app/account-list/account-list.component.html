@@ -1,1 +1,16 @@
-<p>account-list works!</p>
+<table style="width: 100%" summary="List of all URLs">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Creation Date</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let resp of response">
+        <tr>
+            <td>{{resp.username}}</td>
+            <td>{{resp.creationDate}}</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

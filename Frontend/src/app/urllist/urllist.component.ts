@@ -18,7 +18,11 @@ export class URLListComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   public ngOnInit(): void {
-    this.http.get(this.ROOT_URL + '/getShortDetails')
+    this.http.post(this.ROOT_URL + '/getShortDetails', {}, {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('jwt')
+      }),
+    })
       .subscribe((data) => {
         this.response = data
       });
