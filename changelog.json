@@ -1,0 +1,10 @@
+[
+    {
+        "message":"<ul><li>Added Account creation Feature</li><li>Added User List</li></ul>",
+        "version":"2.1"
+    },
+    {
+        "message":"<ul><li>New UI</li><li>New Backend</li><li>Frontend in Agular</li><li>New Login Interface</li><li>Stats at Top of the Page</li></ul>",
+        "version":"2.0"
+    }
+]
