@@ -23,6 +23,8 @@ export class AppComponent{
 
   @HostListener("window:beforeunload",["$event"])
   clearLocalStorage(event){
-      //localStorage.clear();
+      localStorage.clear();
   }
+
+ 
 }

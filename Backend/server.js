@@ -168,6 +168,22 @@ app.post('/TASL/getAccounts', aphAuth, async (req, res) => {
     res.send(accountList).status(200)
 })
 
+
+/*
+*   @POST - deleteAccount | Delete URLs
+*
+*   Response:
+*       - 401: Unauthorized Access. ||  200: Entry Deleted
+*/
+app.post('/TASL/deleteAccount', aphAuth, (req, res) => {
+    console.log(req.headers.username)
+    Accounts.deleteOne({ username: req.headers.username }, function (err) {
+        if (err) return res.send(err)
+    })
+
+    res.send({ code: 200 }).status(200)
+})
+
 /*
 *   @POST - login | Generate JWT and send it to Client
 */
